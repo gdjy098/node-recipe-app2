@@ -5,6 +5,7 @@ This is a small, purposefully-incomplete recipe app intended to be used in some 
 - Built with Node.js, Express, Handlebars, and Sqlite.
 - Scafholds a database with seed data on first launch.
 - Handles the creation, listing, and editing of recipes.
+- Includes basic user management (register, login, profile updates, role-based access).
 
 Some ideas of what to add:
 
@@ -26,6 +27,15 @@ npm install
 npm start
 ```
 Visit `http://localhost:3000` to start managing your recipes.
+
+### 用户管理说明
+
+- 注册：`/register`
+- 登录：`/login`
+- 资料维护：`/profile`
+- 管理员示例页面：`/admin`（仅管理员角色可访问）
+
+可通过设置环境变量 `SESSION_SECRET` 来覆盖默认会话密钥。
 
 ## License
 

@@ -13,6 +13,17 @@
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/recipes">All Recipes</a></li>
+                {{#if currentUser}}
+                    <li><a href="/profile">Profile</a></li>
+                    <li>
+                        <form action="/logout" method="POST" class="nav-form">
+                            <button type="submit" class="btn btn-secondary btn-sm">Logout</button>
+                        </form>
+                    </li>
+                {{else}}
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Register</a></li>
+                {{/if}}
             </ul>
         </nav>
     </header>

@@ -204,6 +204,58 @@ main {
 	margin-top: 1rem;
 }
 
+.auth-container {
+	max-width: 520px;
+	margin: 0 auto;
+	background: white;
+	padding: 2rem;
+	border-radius: 8px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.auth-container h1 {
+	margin-bottom: 1.5rem;
+	color: #2c3e50;
+}
+
+.auth-form {
+	margin-top: 1rem;
+}
+
+.auth-footer {
+	margin-top: 1.5rem;
+	text-align: center;
+}
+
+.alert {
+	padding: 0.75rem 1rem;
+	border-radius: 6px;
+	margin-bottom: 1rem;
+}
+
+.alert-error {
+	background-color: #fdecea;
+	color: #b00020;
+}
+
+.alert-success {
+	background-color: #e7f5ee;
+	color: #1b7f4d;
+}
+
+.profile-meta {
+	margin-top: 1.5rem;
+	color: #7f8c8d;
+}
+
+.nav-form {
+	display: inline;
+}
+
+.nav-form button {
+	padding: 0.4rem 0.8rem;
+}
+
 .recipes-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));

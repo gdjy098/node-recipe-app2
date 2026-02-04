@@ -1,0 +1,36 @@
+<div class="auth-container">
+    <h1>我的资料</h1>
+
+    {{#if error}}
+        <div class="alert alert-error">{{error}}</div>
+    {{/if}}
+
+    {{#if success}}
+        <div class="alert alert-success">{{success}}</div>
+    {{/if}}
+
+    <form class="auth-form" action="/profile" method="POST">
+        <div class="form-group">
+            <label for="username">用户名</label>
+            <input type="text" id="username" name="username" value="{{user.username}}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">邮箱</label>
+            <input type="email" id="email" name="email" value="{{user.email}}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">新密码（可选）</label>
+            <input type="password" id="password" name="password">
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">更新资料</button>
+        </div>
+    </form>
+
+    <div class="profile-meta">
+        <span>角色：{{user.role}}</span>
+    </div>
+</div>
