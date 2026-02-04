@@ -1,6 +1,7 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
-const { initializeDb } = require('./src/database')
+const session = require('express-session')
+const { initializeDb, getDbConnection } = require('./src/database')
 const routes = require('./src/routes')
 
 const app = express()
@@ -9,6 +10,32 @@ const PORT = process.env.PORT || 3000
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
+
+app.use(
+	session({
+		secret: process.env.SESSION_SECRET || 'dev-session-secret',
+		resave: false,
+		saveUninitialized: false,
+		cookie: {
+			httpOnly: true,
+		},
+	})
+)
+
+app.use(async (req, res, next) => {
+	try {
+		if (req.session?.userId) {
+			const db = await getDbConnection()
+			const user = await db.get('SELECT id, username, email, role FROM users WHERE id = ?', [req.session.userId])
+			if (user) {
+				res.locals.currentUser = user
+			}
+		}
+	} catch (error) {
+		console.error('Failed to load current user', error)
+	}
+	next()
+})
 
 app.engine(
 	'hbs',
